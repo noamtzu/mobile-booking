@@ -1,0 +1,32 @@
+{
+  "name": "mobile-booking",
+  "private": true,
+  "description": "Booking app for a service business: Expo (React Native) client, Hono + Postgres API, shared zod schemas.",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "dev:api": "npm run dev -w @booking/api",
+    "dev:mobile": "npm run start -w @booking/mobile",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "build:web": "npm run export:web -w @booking/mobile",
+    "ci": "npm run lint && npm run typecheck && npm run test && npm run build:web"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  }
+}
