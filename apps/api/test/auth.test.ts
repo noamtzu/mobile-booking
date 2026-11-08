@@ -11,16 +11,16 @@ afterAll(async () => {
 
 describe('email-code sign-in', () => {
   it('signs a new customer in and returns a JWT', async () => {
-    expect((await t.call('POST', '/auth/request-code', { body: { email: 'Sam@Example.com' } })).status).toBe(204);
-    const code = t.mailer.lastCode('sam@example.com');
+    expect((await t.call('POST', '/auth/request-code', { body: { email: 'Pat@Example.com' } })).status).toBe(204);
+    const code = t.mailer.lastCode('pat@example.com');
     expect(code).toMatch(/^\d{6}$/);
 
-    const res = await t.call('POST', '/auth/verify', { body: { email: 'sam@example.com', code } });
+    const res = await t.call('POST', '/auth/verify', { body: { email: 'pat@example.com', code } });
     expect(res.status).toBe(200);
-    expect(res.body.user).toMatchObject({ email: 'sam@example.com', role: 'customer' });
+    expect(res.body.user).toMatchObject({ email: 'pat@example.com', role: 'customer' });
 
     const me = await t.call('GET', '/auth/me', { token: res.body.token });
-    expect(me.body.user.email).toBe('sam@example.com');
+    expect(me.body.user.email).toBe('pat@example.com');
   });
 
   it('gives the admin role to configured emails', async () => {
