@@ -15,11 +15,12 @@ It is a complete, store-ready reference project: an Expo (React Native) app for 
 
 ## Screenshots
 
-> Placeholders. Add captures to `docs/screenshots/` and they will show here.
+Expo web build at phone size (390x844), running against the local API with seeded demo data.
 
 | Pick a time | Booking confirmed | Admin: availability |
 |---|---|---|
 | ![Slot picker](docs/screenshots/slots.png) | ![Confirmation](docs/screenshots/confirmation.png) | ![Availability](docs/screenshots/availability.png) |
+| Open times grouped by local day; booked times are struck through. | The confirmation, with the time shown in the customer's zone and an optional reminder. | The owner adds open times as wall-clock times plus an IANA zone. |
 
 ## Architecture
 
